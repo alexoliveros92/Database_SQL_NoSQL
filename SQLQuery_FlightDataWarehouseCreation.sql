@@ -1,5 +1,5 @@
---CREATE DATABASE FlightsOnTimeGPT2_DW
---GO
+CREATE DATABASE FlightsOnTimeGPT2_DW
+GO
 Use FlightsOnTimeGPT2_DW
 GO
 CREATE TABLE Airlines_Dim
@@ -70,6 +70,6 @@ FOREIGN KEY (AirportOriginKey) REFERENCES AirportOrigin_Dim(AirportOriginKey),
 FOREIGN KEY (DelayKey) REFERENCES Delay_Dim(DelayKey)
 );
 GO
-
+--Uncomment the next 2 lines to delete all the data warehouse
 --DELETE FROM FlightDelay_Fact;
 --go
