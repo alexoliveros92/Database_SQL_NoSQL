@@ -16,7 +16,7 @@ ON al.airline_code = f.airline_code
 WHERE al.Airline_code='AA' 
 ORDER BY [Average delay] DESC;
 
---NEO4J (CQL)
+--NEO4J (NoSQL)
 /*
 MATCH (a:Airport)<-[:LANDS_AT]-(f:Flight)-[:OPERATED_BY]->(al:Airlines)
 WHERE al.id = 'AA'
@@ -39,7 +39,7 @@ ON f.origin_airport = a.airport_code
 GROUP BY f.origin_airport, a.airport
 ORDER BY num_flights DESC;
 
---NEO4J (CQL)
+--NEO4J (NoSQL)
 /*
 MATCH (f:Flight)-[:TAKES_OFF_FROM]->(a:Airport)
 RETURN f.origin_airport as Airport, a.airport as airport, count(f.origin_airport) as num_flights
@@ -56,7 +56,7 @@ JOIN airlines
 ON flights.airline_code = airlines.airline_code
 WHERE flights.flight_number = '1495';
 
---NEO4J (CQL)
+--NEO4J (NoSQL)
 
 /*
 MATCH (f:Flight)-[:OPERATED_BY]->(a:Airlines)
@@ -76,7 +76,7 @@ WHERE flights.delay_minutes > 0
 GROUP BY al.airline_code, al.airline
 ORDER BY num_delays DESC;
 
---NEO4J (CQL)
+--NEO4J (NoSQL)
 
 /*
 MATCH (f:Flight)-[:OPERATED_BY]->(a:Airlines)
@@ -99,7 +99,7 @@ WHERE f.origin_airport = 'JFK' AND f.departure_delay IS NOT NULL
 GROUP BY airline
 ORDER BY avg_delay DESC
 
---NEO4J (CQL)
+--NEO4J (NoSQL)
 
 /*
 MATCH (a:Airlines)<-[:OPERATED_BY]-(f:Flight {origin_airport: 'JFK'})
@@ -120,7 +120,7 @@ ON a.airline_code=f.airline_code
 GROUP BY f.airline_code, a.airline
 ORDER BY Average_distance DESC
 
---NEO4J (CQL)
+--NEO4J (NoSQL)
 
 /*
 MATCH (a:Airlines)<-[:OPERATED_BY]-(f:Flight)
