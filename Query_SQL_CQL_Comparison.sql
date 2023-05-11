@@ -1,3 +1,4 @@
+--Select the database to use
 --use flightsDB
 --go
 
